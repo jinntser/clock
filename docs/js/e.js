@@ -29,6 +29,11 @@ $(function (){
             '<i class="fa fa-motorcycle"></i>','<i class="fa fa-shopping-cart"></i>','<i class="fa fa-television"></i>',
             '<i class="fa fa-bathtub"></i>','<i class="fa fa-meh-o"></i>','<i class="fa fa-bed"></i>']
     });
+    $('.custom-ticks03').clock({
+        tickType: 'custom',
+        rotateProps: false,
+        ticks: ['100','120','140','160','180',' ',' ','0','20','40','60','80']
+    });
     $('.fancy').clock();
     $('.wheel01').wheel({
         type: 'plate',
