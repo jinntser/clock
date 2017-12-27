@@ -59,12 +59,12 @@
                     props += '<span class="' + settings.propClass + '"></span>';
                 }
                 _target.append('<div class="wheel ' + settings.wrapClass + '" style="transform-style: preserve-3d;">' + props + '</div>');
+                _target.css('perspective-origin', '50% 50%');
                 inited = true;
             }
             _wheel = _target.find('.wheel');
 
             _setup();
-            _target.css('perspective-origin', '50% 50%');
 
             function _setup() {
                 rad = settings.radius == 'auto' ? (_wheel[0].offsetHeight / (2 * Math.tan(Math.PI / settings.props))) : settings.radius;
@@ -89,7 +89,7 @@
         };
 
         _init(settings.type);
-        if (settings.responsive == true) {
+        if (settings.responsive == true && settings.type == 'plate') {
             $(window).resize(function () {
                 _init(settings.type)
             });
