@@ -1,0 +1,414 @@
+.clock-wrap {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    max-width: 240px;
+    margin: 20px;
+    border: 2px solid #555;
+    border-radius: 50%;
+    line-height: 0;
+    box-sizing: border-box;
+}
+
+.clock {
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 0 #555 inset;
+    background-color: rgba(210, 210, 210, .18);
+    transform-origin: center center;
+}
+
+.clock .tick {
+    position: absolute;
+    display: block;
+    transform-origin: center center;
+}
+
+.clock .axle, .clock .hr, .clock .min, .clock .sec {
+    position: absolute;
+    display: block;
+    transform-origin: center top;
+}
+
+.clock .ticks {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+}
+
+.clock .tick {
+    width: 4px;
+    height: 6%;
+    background-color: #2E100B;
+    z-index: 2;
+    line-height: 0;
+    letter-spacing: -0.1em;
+    font-family: 'Times New Roman';
+    color: #2E100B;
+    transform: translateX(-50%);
+}
+
+.clock .axle, .clock .hr, .clock .min, .clock .sec {
+    will-change: transform;
+    top: 50%;
+    left: 50%;
+}
+
+.clock .axle, .clock .axle:before, .clock .axle:after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+}
+
+.clock .axle {
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    border: 1px solid #555;
+    box-shadow: 0 0 3px 0 #777;
+    z-index: 4;
+}
+
+.clock .axle:before, .clock .axle:after {
+    content: '';
+}
+
+.clock .axle:before {
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    background-color: #000;
+    box-shadow: 0 0 1px 0 #777;
+    z-index: -1;
+}
+
+.clock .axle:after {
+    width: 10px;
+    height: 10px;
+    margin: -5px 0 0 -5px;
+    background-color: #f1f1f1;
+    box-shadow: 0 0 3px 0 #222 inset;
+}
+
+.clock .hr, .clock .min, .clock .sec {
+    transition: all ease .3s;
+    transform: rotate(-180deg);
+    z-index: 3;
+}
+
+.clock .hr {
+    width: 4px;
+    height: 25%;
+    margin-left: -2px;
+    background-color: #000;
+}
+
+.clock .min {
+    width: 4px;
+    height: 37%;
+    margin-left: -2px;
+    background-color: #000;
+}
+
+.clock .sec {
+    width: 2px;
+    height: 40%;
+    margin-left: -1px;
+    background-color: #E89213;
+}
+
+.clock.custom .ticks {
+    width: 86%;
+    height: 86%;
+    margin: 7%;
+}
+
+.clock.custom .tick {
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.clock-wrap.fancy:after, .clock-wrap.fancy:before {
+    display: block;
+    position: absolute;
+    width: 34%;
+    height: 34%;
+    top: 50%;
+    left: 50%;
+    margin: -17% 0 0 -17%;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: #2E100B;
+    border-width: 2px 0 2px 0;
+    box-sizing: border-box;
+    content: '';
+}
+
+.clock-wrap.fancy:before {
+    animation: flipR linear 7s infinite;
+}
+
+.clock-wrap.fancy:after {
+    transform: rotateZ(-90deg);
+    animation: flipL linear 7s infinite;
+}
+
+.clock-wrap.fancy .axle {
+    display: block;
+    position: absolute;
+    width: 29%;
+    height: 29%;
+    top: 50%;
+    left: 50%;
+    margin: -14.5% 0 0 -14.5%;
+    border-radius: 50%;
+    background-color: rgba(120, 120, 120, .12);
+    background-image: url('../img/logo.png');
+    background-size: 75% auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid rgba(0, 0, 0, .13);
+}
+
+.clock-wrap.fancy .axle:before, .clock-wrap.fancy .axle:after {
+    display: none;
+}
+
+.clock-wrap.fancy .halfMin .axle {
+    animation: flipHor 6s;
+}
+
+.clock-wrap.fancy .hr, .clock-wrap.fancy .min, .clock-wrap.fancy .sec {
+    width: 2px;
+    height: 17%;
+    margin-left: -1px;
+    transform: rotate(-180deg);
+    transition: all ease .3s;
+    z-index: 3;
+    background-color: transparent;
+}
+
+.clock-wrap.fancy .hr:after, .clock-wrap.fancy .hr:before,
+.clock-wrap.fancy .min:after, .clock-wrap.fancy .min:before,
+.clock-wrap.fancy .sec:after, .clock-wrap.fancy .sec:before {
+    will-change: transform;
+    display: block;
+    position: absolute;
+    content: '';
+}
+
+.clock-wrap.fancy .hr:after, .clock-wrap.fancy .min:after, .clock-wrap.fancy .sec:after {
+    top: 100%;
+    left: 0;
+    width: 100%;
+}
+
+.clock-wrap.fancy .hr:after, .clock .min:after {
+    background-color: #2E100B;
+}
+
+.clock-wrap.fancy .sec:after {
+    background-color: #E89213;
+}
+
+.clock-wrap.fancy .hr:after {
+    height: 95%;
+}
+
+.clock-wrap.fancy .min:after {
+    height: 150%;
+}
+
+.clock-wrap.fancy .sec:after {
+    height: 160%;
+}
+
+.clock-wrap.fancy .hr:before, .clock-wrap.fancy .min:before, .clock-wrap.fancy .sec:before {
+    left: 50%;
+    width: 500%;
+    height: 0;
+    padding-top: 500%;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+.clock-wrap.fancy .hr:before {
+    top: 155%;
+    background-color: #000;
+}
+
+.clock-wrap.fancy .min:before {
+    top: 205%;
+    background-color: #000;
+}
+
+.clock-wrap.fancy .sec:before {
+    top: 215%;
+    background-color: #E89213;
+}
+
+@keyframes flipR {
+    0% {
+        transform: rotateZ(0deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg) rotateY(360deg);
+    }
+}
+
+@-moz-keyframes flipR {
+    0% {
+        transform: rotateZ(0deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg) rotateY(360deg);
+    }
+}
+
+@-webkit-keyframes flipR {
+    0% {
+        transform: rotateZ(0deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg) rotateY(360deg);
+    }
+}
+
+@keyframes flipL {
+    0% {
+        transform: rotateZ(-90deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateZ(270deg) rotateY(360deg);
+    }
+}
+
+@-moz-keyframes flipL {
+    0% {
+        transform: rotateZ(-90deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateZ(270deg) rotateY(360deg);
+    }
+}
+
+@-webkit-keyframes flipL {
+    0% {
+        transform: rotateZ(-90deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateZ(270deg) rotateY(360deg);
+    }
+}
+
+@keyframes flipHor {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+@-moz-keyframes flipHor {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+@-webkit-keyframes flipHor {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes reveal {
+    0% {
+        transform: scale(0.0001, 0.0001);
+    }
+    30% {
+        transform: scale(1, 0.02);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+@-moz-keyframes reveal {
+    0% {
+        transform: scale(0.0001, 0.0001);
+    }
+    30% {
+        transform: scale(1, 0.02);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+@-webkit-keyframes reveal {
+    0% {
+        transform: scale(0.0001, 0.0001);
+    }
+    30% {
+        transform: scale(1, 0.02);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes hide {
+    0% {
+        transform: scale(1, 1);
+    }
+    60% {
+        transform: scale(1, 0.01);
+    }
+    100% {
+        transform: scale(0.0001, 0.0001);
+    }
+}
+
+@-moz-keyframes hide {
+    0% {
+        transform: scale(1, 1);
+    }
+    60% {
+        transform: scale(1, 0.01);
+    }
+    100% {
+        transform: scale(0.0001, 0.0001);
+    }
+}
+
+@-webkit-keyframes hide {
+    0% {
+        transform: scale(1, 1);
+    }
+    60% {
+        transform: scale(1, 0.01);
+    }
+    100% {
+        transform: scale(0.0001, 0.0001);
+    }
+}
