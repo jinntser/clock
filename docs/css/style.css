@@ -1,3 +1,8 @@
+.clock-wrap.fancy .axle {
+    background-image: url('../img/219.jpg');
+    background-size: auto 100%;
+}
+
 .demo-wheel {
     display: block;
     position: relative;
