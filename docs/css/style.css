@@ -1,0 +1,23 @@
+.demo-wheel {
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    counter-reset: wheelProp;
+    box-sizing: border-box;
+}
+
+.demo-wheel .wheel-prop:before {
+    font-size: 32px;
+    counter-increment: wheelProp 1;
+    content: counter(wheelProp);
+}
+
+.wheel02 {
+    padding: 90px;
+}
+
+.wheel02 .wheel-wrap {
+    transform: rotateX(-10deg) rotateY(-45deg)
+}
