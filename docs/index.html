@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>Clocks</title>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" href="../clock.css">
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+        .demo-wheel {
+            display: block;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 20px;
+            counter-reset: wheelProp;
+            box-sizing: border-box;
+        }
+
+        .demo-wheel .wheel-prop:before {
+            font-size: 32px;
+            counter-increment: wheelProp 1;
+            content: counter(wheelProp);
+        }
+
+        .wheel02 {
+            padding: 90px;
+        }
+
+        .wheel02 .wheel-wrap {
+            transform: rotateX(-10deg) rotateY(-45deg)
+        }
+    </style>
+
+</head>
+<body>
+<main>
+    <div class="wrap-outer">
+        <div class="wrap-inner">
+            <article>
+                <h1>Just a simple clock using jQuery library</h1>
+                <p>First of all, it's just made for fun, and I'm still working on it<span class="notice">(and perhaps I'll make a canvas version?)</span>.</p>
+                <h2>Instructions:</h2>
+                <p>
+                    First, load the <a href="https://jquery.com/" target="_blank">jQuery</a> library.
+                </p>
+                <p class="code-box">
+                    &lt;script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"&gt;&lt;/script&gt;
+                </p>
+                <p>
+                    And then, load the script and stylesheet.
+                </p>
+                <p class="code-box">
+                    &lt;script type="text/javascript" src="clock.js"&gt;&lt;/script&gt;<br>
+                    &lt;link type="text/css" rel="stylesheet" href="clock.css"&gt;
+                </p>
+                <h3>Let's make it simple..</h3>
+                <p class="code-box">
+                    $('.clock01').clock();
+                </p>
+                <p>
+                    And it look just like...
+                </p>
+                <div class="clock01"></div>
+                <h3>OK, it's a clock. Maybe we can make some change of it?</h3>
+                <p class="code-box">
+                    $('.clock02').clock({<br>
+                    &ensp;&ensp;&ensp;&ensp;tickType: 'roman',<br>
+                    &ensp;&ensp;&ensp;&ensp;rotateProps: false<br>
+                    });<br><br>
+                    $('.clock03').clock({<br>
+                    &ensp;&ensp;&ensp;&ensp;tickType: 'arabic',<br>
+                    &ensp;&ensp;&ensp;&ensp;rotateProps: false<br>
+                    });
+                </p>
+                <div class="clock02"></div>
+                <div class="clock03"></div>
+                <h3>Sir, I want something spethial. <span class="notice">What's wrong with your tongue?</span></h3>
+                <p class="code-box">
+                    $('.clock04').clock({<br>
+                    &ensp;&ensp;&ensp;&ensp;tickType: 'zodiac',<br>
+                    &ensp;&ensp;&ensp;&ensp;rotateProps: false<br>
+                    });<br><br>
+                    $('.clock05').clock({<br>
+                    &ensp;&ensp;&ensp;&ensp;tickType: 'chineseZodiac',<br>
+                    &ensp;&ensp;&ensp;&ensp;rotateProps: false<br>
+                    });
+                </p>
+                <div class="clock04"></div>
+                <div class="clock05"></div>
+                <h3>Can I set my own ticks? <span class="notice">Yes, of course.</span></h3>
+                <p class="code-box">
+                    $('.custom-ticks01').clock({<br>
+                    &ensp;&ensp;&ensp;&ensp;tickType: 'custom',<br>
+                    &ensp;&ensp;&ensp;&ensp;rotateProps: false,<br>
+                    &ensp;&ensp;&ensp;&ensp;ticks: ['6','6','6','6','6','6','6','6','6','6','6','6']<br>
+                    });<br><br>
+                    $('.custom-ticks02').clock({<br>
+                    &ensp;&ensp;&ensp;&ensp;tickType: 'custom',<br>
+                    &ensp;&ensp;&ensp;&ensp;rotateProps: false,<br>
+                    &ensp;&ensp;&ensp;&ensp;ticks: ['&lt;i class="fa fa-diamond"&gt;&lt;/i&gt;','&lt;i class="fa fa-wrench"&gt;&lt;/i&gt;','&lt;i class="fa fa-hand-peace-o"&gt;&lt;/i&gt;',<br>
+                    &ensp;&ensp;&ensp;&ensp;'&lt;i class="fa fa-bomb"&gt;&lt;/i&gt;','&lt;i class="fa fa-paw"&gt;&lt;/i&gt;','&lt;i class="fa fa-hand-paper-o"&gt;&lt;/i&gt;',<br>
+                    &ensp;&ensp;&ensp;&ensp;'&lt;i class="fa fa-motorcycle"&gt;&lt;/i&gt;','&lt;i class="fa fa-shopping-cart"&gt;&lt;/i&gt;','&lt;i class="fa fa-television"&gt;&lt;/i&gt;',<br>
+                    &ensp;&ensp;&ensp;&ensp;'&lt;i class="fa fa-bathtub"&gt;&lt;/i&gt;','&lt;i class="fa fa-meh-o"&gt;&lt;/i&gt;','&lt;i class="fa fa-bed"&gt;&lt;/i&gt;']<br>
+                    });
+                </p>
+                <div class="custom-ticks01"></div>
+                <div class="custom-ticks02"></div>
+                <h3>How about another fancy style?</h3>
+                <p class="code-box">
+                    <span class="notice">**Just add 'fancy' to the clock wrap.</span><br>
+                    $('.fancy').clock();
+                </p>
+                <div class="fancy"></div>
+                <h2>Here are the default values:</h2>
+                <p class="code-box">
+                    radius: 'auto', <span class="notice">Highly recommend that use 'auto' if you are building a clock</span><br>
+                    tickType: '', <span class="notice">Could be 'roman' / 'arabic' / 'zodiac' / 'chineseZodiac', or set to 'custom' if you want to use custom ticks.</span><br>
+                    rotateProps: true, <span class="notice">Rotate the ticks or not.</span><br>
+                    responsive: true, <span class="notice">Resize the clock if window size changed.</span><br>
+                    ticks: [] <span class="notice">Custom ticks(if tickType is set to 'custom'), starts from 12.</span>
+                </p>
+                <h2>And more... Here are some magic...</h2>
+                <div class="demo-wheel wheel01"></div>
+                <div class="demo-wheel wheel02"></div>
+                <p><span class="notice">**This one is rotated.</span></p>
+                <p class="code-box">
+                    <span class="notice">**DO NOT use 'wheel' as the class if you don't want any trouble.</span><br>
+                    $('.wheel01').wheel({<br>
+                    &ensp;&ensp;&ensp;&ensp;type: 'plate',<br>
+                    &ensp;&ensp;&ensp;&ensp;props: 10<br>
+                    });<br><br>
+                    $('.wheel02').wheel({<br>
+                    &ensp;&ensp;&ensp;&ensp;type: 'ring',<br>
+                    &ensp;&ensp;&ensp;&ensp;props: 15<br>
+                    });
+                </p>
+                <h2>Here are the default values:</h2>
+                <p class="code-box">
+                    type: 'ring', <span class="notice">Set to ring/plate as you want.</span><br>
+                    radius: 'auto', <span class="notice">Set the size of the ring/plate.</span><br>
+                    <span class="notice">**transform: translateY(-50%) will be applied to adjust the position if the type is set to 'plate', which would make the wheel bigger than your box.</span><br>
+                    props: 6, <span class="notice">Set the number of props you want to generate.</span><br>
+                    wrapClass: 'wheel-wrap', <span class="notice">Custom wrap class.</span><br>
+                    propClass: 'wheel-prop', <span class="notice">Custom prop class.</span><br>
+                    rotateProps: true, <span class="notice">Actually, it will rotate the props, not the ticks.</span><br>
+                    responsive: true <span class="notice">Actually, it will resize the ring/plate, not the clock.</span>
+                </p>
+            </article>
+        </div>
+    </div>
+</main>
+<script src="js/jquery.min.js"></script>
+<script src="../clock.js"></script>
+<script src="js/e.js"></script>
+</body>
+</html>
